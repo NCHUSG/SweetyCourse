@@ -10,6 +10,7 @@
 	
   <title>NCTU+</title>
   <link data-turbolinks-track="true" href="/assets/application1.css" media="all" rel="stylesheet" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
 
 
   <style type="text/css">
@@ -159,25 +160,70 @@ s
 	<div class=""></div>
 </header>
     
-<section id="" >
-	<div class="">
-		<div class="">
-				<div class="">
-					<h2 class="">為什麼使用NCTU+ ?<br><br></h2>					
+<section id="intro" >
+	<div class="container">
+		<div class="row" >
+				<div class="section-heading" >
+					<h2 class="section-heading" style="font-size:36px;letter-spacing:20px;font-family:微軟正黑體">小工具簡介<br><br></h2>					
 				</div>
 		</div>
 	</div>
-	<div class="">
-		<div class="">
-			<div class="">
-				<div class="" href="">					
-						<img alt="1" class="" src="" />
-						<h3>全校課程心得</h3>
-						<p class="" style="width:80%;margin:auto;">
+	<div class="container">
+		<div class="row">
+			<a class="elective-helper-linker" href="https://www.facebook.com/" title="選課小幫手"> 
+			<div class="service-box">
+				<img alt="EH-Lost"class="elective-helper"src="/SweetyCourse/img/0.jpg"height="50 px"width="50 px"/>
+				 
+			</div>
+		</div>
+		<div class="elective-helper-linker" >選課小幫手</div>
+		<p class="elective-helper" style="width:80%;margin:right;">
+			選課小幫手內文。
+		</p> 
+	</div>
+	<div class="container">
+		<div class="row">
+			<a class="tiagenda-linker" href="https://www.google.com/" title="喬時間小幫手"> 
+			<div class="service-box">
+				<img alt="Tia-Lost"class="elective-helper"src="/SweetyCourse/img/1.jpg"height="50 px"width="50 px"/>
+				 
+			</div>
+		</div>
+		<div class="tiagenda-linker-linker" >喬時間小幫手</div>
+		<p class="tiagenda-linker-helper" style="width:80%;margin:right;">
+			喬時間小幫手內文。
+		</p> 
+	</div>
+	<div class="container">
+		<div class="row">
+			<a class="Teaching Evaluation System-linker" href="http://www.nchu.edu.tw/index1.php" title="教學評鑑系統"> 
+			<div class="service-box">
+				<img alt="TES-Lost"class="elective-helper"src="/SweetyCourse/img/2.jpg"height="50 px"width="50 px"/>
+				 
+			</div>
+		</div>
+		<div class="Teaching Evaluation System-linker" >教學評鑑系統</div>
+		<p class="Teaching Evaluation System-helper" style="width:80%;margin:right;">
+			教學評鑑系統內文。
+		</p> 
+	</div>
+<a href="http://google.com" class="ui medium circular image">
+  <img src="/SweetyCourse/img/2.jpg">
+</a>
+			<!-- <p class="elective-helper" style="width:80%;margin:right;">
+						選課前的好幫手，包羅歷年交大所有課程心得，舊文新文一次找齊，也包含課堂評價與歷屆成績，也歡迎同學一起討論。
+						</p> -->
+
+<!-- /			<div class="a"> --> -->
+<!-- /				<script type="text/javascript"></script> -->
+				<!-- <div class="service-box" href="https://www.google.com.tw">			
+						<img alt="EH-Lost" class="elective-helper" src="/SweetyCourse/img/0.jpg" height="50 px" width="50 px" />
+						<h3>選課小幫手</h3>
+						<p class="elective-helper" style="width:80%;margin:auto;">
 						選課前的好幫手，包羅歷年交大所有課程心得，舊文新文一次找齊，也包含課堂評價與歷屆成績，也歡迎同學一起討論。
 						</p>
-				</div>
-			</div>
+				</div> -->
+			
 			<div class="">
 				<div class="" href="">
 					<img alt="2" class="" src="" />
@@ -225,6 +271,9 @@ s
 	</div>
 </section>
 
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
+
 <script>
 (function($){
 $(document).ready(function(){
@@ -269,6 +318,9 @@ $(document).ready(function(){
 			});
 		},5000)
 
+		$(".a").click(function(e){
+			$("this").appendTo("https://www.google.com.tw");
+		});
 });
 
 
