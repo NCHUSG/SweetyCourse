@@ -1,0 +1,31 @@
+
+    .top {
+    width: 100%;
+      position: fixed;
+    }
+
+
+  
+     ul li{
+      list-style-type: none;
+        display: inline-block;
+        height:25px;
+        padding:10px;
+        border-left:1px solid #94ADC1;
+        color:white;
+
+    }
+    .top-left {
+      width: 75%;
+    }
+    .top-right{
+      width: 25%;
+      text-align: right;
+    }
+    .page-scroll {
+      color: black;
+      text-decoration:none;
+      font-size:25px;
+
+
+    }
