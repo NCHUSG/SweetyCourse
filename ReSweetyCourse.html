@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/ninja/ninja-slider.css">
+
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- 引入Ｊquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- 引入Ｊs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
+  <!-- 引入CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+  <script src="js/control.js"></script>
+    
+  <script>
+    $(document).ready(function() {
+      var source_id = '1ejd-JWytrLNpasB3SOwso7k4uJS7ohPKYaMyKxiNdvE';
+      $.ajax({
+          url: 'https://spreadsheets.google.com/feeds/list/' + source_id + '/1/public/values?alt=json',
+          async: false,
+          type: 'GET',
+        })
+        .done(function(data) {
+          console.log("success");
+          for (var i = 0 ; i < (data.feed.entry).length ; i++)
+          {
+            var text = data.feed.entry[i]['gsx$text']['$t'];
+            var img = data.feed.entry[i]['gsx$src']['$t'];
+            var photo_inner = $.parseHTML("<li><a class=\"ns-img\" href=\"" + img + "\"/></a><div class=\"caption\">"+ text +"</div></li>");
+            $('#inphoto').append(photo_inner);
+          }
+        })
+        .fail(function() {
+          console.log("Home photo error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+
+      function getFieldValue(myform, fieldName) {
+        var text = myform.form('get value', fieldName);
+        if (text != "") return text;
+        else return "none";
+      }
+
+      $("#contactBtn").click(function() {
+        var form = $(".ui.form");  
+        var formData = {
+            yourName: getFieldValue(form, 'yourname'),
+            yourEmail: getFieldValue(form, 'youremail'),
+            tellMeWhat: getFieldValue(form, 'tellmewhat')
+        };
+        $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycbxoIf19ii0eL6CVzYSsvmo_qglkH1wXe3_rfgstAESvj9GB7fu_/exec',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            success: function(){console.log('yes')},
+            fail: function(){console.log('no')}
+        });
+      });     
+    });
+  </script>
+  <script src="js/ninja/ninja-slider.js"></script>
+
+</head>
+<body>
+  <!-- 這裡放 menu bar (nav bar) -->
+  <div class="ui fixed secondary pointing menu"  >
+    <a class="item" href="http://www.google.com" style="color:white;">Nchu+</a>
+    <a class="item" href="http://www.google.com" style="color:white;">>選課小幫手</a>
+    <a class="item" href="http://www.google.com" style="color:white;">>排時間小幫手</a>
+    <a class="item" href="http://www.google.com" style="color:white;">>課程評鑑</a>
+    <div class="right menu">
+        <a class="ui item active" href="http://www.google.com" style="color:white;">>登入</a>
+    </div>
+  </div>
+  <!-- 這裡放 照片slide -->
+  <div id="photoSlide">
+    <div id="ninja-slider">
+      <div class="slider-inner">
+        <ul id="inphoto">
+        </ul>
+        <div class="navsWrapper">
+            <div id="ninja-slider-prev"></div>
+            <div id="ninja-slider-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <div class="space"></div>
+
+  <!-- 這裡放 各個網頁連結-->
+  <div id="photoSlide">
+    <div id="ninja-slider">
+      <div class="slider-inner">
+        <ul id="inphoto">
+        </ul>
+        <div class="navsWrapper">
+            <div id="ninja-slider-prev"></div>
+            <div id="ninja-slider-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui three column grid" style="padding">
+    <div class="column">
+      <a class="ui fluid card" href="http://www.google.com">
+        <div class="image">
+          <img src="dog.jpg">
+        </div>
+        <div class="content" style="text-align:center">
+          <a class="header" >選課小幫手</a>
+        </div>
+      </sa>
+    </div>
+
+    <div class="column">
+      <a  class="ui fluid card" href="http://www.google.com">
+        <div class="image" >
+          <img src="dog.jpg" >
+        </div>
+        <div class="content"style="text-align:center">
+          <a class="header">排時間小幫手</a>
+        </div>
+      </a>
+    </div>
+
+    <div class="column">
+      <a class="ui fluid card" href="http://www.google.com">
+        <div class="image">
+          <img src="dog.jpg">
+        </div>
+        <div class="content" style="text-align:center">
+          <a class="header">課程評鑑系統</a>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 這裡放 聯絡我 -->
+  <div id="contactMe" class="section">
+    <div class="space"></div>
+    <div class="ui one column centered grid container">
+      <form class="ui large form segment">
+        <div class="field">
+          <label>Your name</label>
+          <input name="yourname" type="text">
+        </div>
+        <div class="field">
+          <label>Your email</label>
+          <input name="youremail" type="text">
+        </div>
+        <div class="field">
+          <label>You want to tell me what</label>
+          <textarea name="tellmewhat" type="text"></textarea>
+        </div>
+        <div id="contactBtn" class="ui olive submit button">Submit</div>
+        <div class="ui error message"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 這裡放 footer -->
+  <div class="ui green inverted vertical footer segment">
+    <div class="ui center aligned container">
+      <div class="ui stackable inverted divided grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">QR code</h4>
+          <div class="ui inverted link list">
+            
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">My Country</h4>
+          <div class="ui inverted link list">
+            <i class="massive tw flag"></i>
+            <p>Taiwan</p>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Occupation</h4>
+          <div class="ui inverted link list">
+            <p>University Student</p>
+            <a class="item" href="http://www.nchu.edu.tw/index1.php" target="_blnak">My school</a>
+            <a class="item" href="http://nchuit.cc/" target="_blnak">My group</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Thanks for your watching</h4>
+          <p>If you have any question,you can use contact me segment send message to me.In addition,you can be my friend through Facebook.</p>
+        </div>
+      </div>
+      <div class="ui inverted divider"></div>
+      <div class="ui horizontal inverted small divided link list">
+        <a class="item" href="http://semantic-ui.com/examples/sticky.html#">Designed by PeiYao Chang</a>
+        <a class="item" href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+    
+</body>
+</html>    
