@@ -1,187 +1,170 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <title>Sweetycourse by NCHUSG</title>
+    <title>NCHU+</title>
+    <link rel="icon" href="nchu_sg.jpg" type="image/ico" />
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ninja/ninja-slider.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Sweetycourse</h1>
-      <h2 class="project-tagline">興●課程</h2>
-      <a href="https://github.com/NCHUSG/SweetyCourse" class="btn">View on GitHub</a>
-      <a href="https://github.com/NCHUSG/SweetyCourse/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/NCHUSG/SweetyCourse/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <p>&lt;!DOCTYPE html&gt;
-</p>
-
-<p></p>
     
-    NCHU+
+    <!-- 引入Ｊquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- 引入Ｊs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
+    <!-- 引入CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+    <style>
+    #interview {
+        width: 100%;
+        margin: 0 auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 0 15%
+    }
     
+    a {
+        color: rgba(255, 255, 255, 0.9);
+    }
     
+    .ui.menu .pointing.dropdown.item .menu {
+        margin-top: 0;
+    }
     
+    .ui.menu .dropdown.item .menu {
+        width: 100%;
+    }
     
+    .ui.menu .ui.dropdown .menu>.item {
+        color: rgba(255, 255, 255, 0.9)!important;
+    }
     
-
-<pre><code>&lt;!-- 引入Ｊquery --&gt;
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
-&lt;!-- 引入Ｊs --&gt;
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"&gt;&lt;/script&gt;
-&lt;!-- 引入CSS --&gt;
-&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css"&gt;
-&lt;style&gt;
-#interview {
-    width: 100%;
-    margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 0 15%
-}
-
-a {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.ui.menu .pointing.dropdown.item .menu {
-    margin-top: 0;
-}
-
-.ui.menu .dropdown.item .menu {
-    width: 100%;
-}
-
-.ui.menu .ui.dropdown .menu&gt;.item {
-    color: rgba(255, 255, 255, 0.9)!important;
-}
-
-.ui.menu .dropdown.item .menu {
-    background-color: black;
-}
-
-body {
-    font-family: Microsoft JhengHei;
-}
-
-.blurring.dimmable &gt; .inverted.dimmer {
-    background-color: rgba(0, 0, 0, 0.75);
-}
-
-.clock_black {
-    color: white;
-}
-
-.text_center {
-    text-align: center !important;
-}
-&lt;/style&gt;
-&lt;script src="js/control.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-$(document).ready(function() {
-    $('.special.cards .image').dimmer({
-        on: 'hover'
-    });
-    $('#topmenu div')
-        .dropdown({
+    .ui.menu .dropdown.item .menu {
+        background-color: black;
+    }
+    
+    body {
+        font-family: Microsoft JhengHei;
+    }
+    
+    .blurring.dimmable > .inverted.dimmer {
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+    
+    .clock_black {
+        color: white;
+    }
+    
+    .text_center {
+        text-align: center !important;
+    }
+    </style>
+    <script src="js/control.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.special.cards .image').dimmer({
             on: 'hover'
         });
-    var source_id = '1ejd-JWytrLNpasB3SOwso7k4uJS7ohPKYaMyKxiNdvE';
-    $.ajax({
-            url: 'https://spreadsheets.google.com/feeds/list/' + source_id + '/1/public/values?alt=json',
-            async: false,
-            type: 'GET',
-        })
-        .done(function(data) {
-            console.log("success");
-            for (var i = 0; i &lt; (data.feed.entry).length; i++) {
-                var text = data.feed.entry[i]['gsx$text']['$t'];
-                var img = data.feed.entry[i]['gsx$src']['$t'];
-                var photo_inner = $.parseHTML("&lt;li&gt;&lt;a class=\"ns-img\" href=\"" + img + "\"/&gt;&lt;/a&gt;&lt;div class=\"caption\"&gt;" + text + "&lt;/div&gt;&lt;/li&gt;");
-                $('#inphoto').append(photo_inner);
-            }
-        })
-        .fail(function() {
-            console.log("Home photo error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
-    function getFieldValue(myform, fieldName) {
-        var text = myform.form('get value', fieldName);
-        if (text != "") return text;
-        else return "none";
-    }
-    $("#contactBtn").click(function() {
-        var form = $(".ui.form");
-        var formData = {
-            yourName: getFieldValue(form, 'yourname'),
-            yourEmail: getFieldValue(form, 'youremail'),
-            tellMeWhat: getFieldValue(form, 'tellmewhat')
-        };
+
+
+        $('#topmenu div')
+            .dropdown({
+                on: 'hover'
+            });
+
+
+        var source_id = '1ejd-JWytrLNpasB3SOwso7k4uJS7ohPKYaMyKxiNdvE';
         $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbxoIf19ii0eL6CVzYSsvmo_qglkH1wXe3_rfgstAESvj9GB7fu_/exec',
-            type: 'POST',
-            dataType: 'json',
-            data: formData,
-            success: function() {
-                console.log('yes')
-            },
-            fail: function() {
-                console.log('no')
-            }
+                url: 'https://spreadsheets.google.com/feeds/list/' + source_id + '/1/public/values?alt=json',
+                async: false,
+                type: 'GET',
+            })
+            .done(function(data) {
+                console.log("success");
+                for (var i = 0; i < (data.feed.entry).length; i++) {
+                    var text = data.feed.entry[i]['gsx$text']['$t'];
+                    var img = data.feed.entry[i]['gsx$src']['$t'];
+                    var photo_inner = $.parseHTML("<li><a class=\"ns-img\" href=\"" + img + "\"/></a><div class=\"caption\">" + text + "</div></li>");
+                    $('#inphoto').append(photo_inner);
+                }
+            })
+            .fail(function() {
+                console.log("Home photo error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+
+        function getFieldValue(myform, fieldName) {
+            var text = myform.form('get value', fieldName);
+            if (text != "") return text;
+            else return "none";
+        }
+
+        $("#contactBtn").click(function() {
+            var form = $(".ui.form");
+            var formData = {
+                yourName: getFieldValue(form, 'yourname'),
+                yourEmail: getFieldValue(form, 'youremail'),
+                tellMeWhat: getFieldValue(form, 'tellmewhat')
+            };
+            $.ajax({
+                url: 'https://script.google.com/macros/s/AKfycbxoIf19ii0eL6CVzYSsvmo_qglkH1wXe3_rfgstAESvj9GB7fu_/exec',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                success: function() {
+                    console.log('yes')
+                },
+                fail: function() {
+                    console.log('no')
+                }
+            });
         });
     });
-});
-&lt;/script&gt;
-&lt;script src="js/ninja/ninja-slider.js"&gt;&lt;/script&gt;
-</code></pre>
+    </script>
+    <script src="js/ninja/ninja-slider.js"></script>
+</head>
+</div>
 
-<p>
-</p>
-
-<p></p>
-    &lt;!-- 這裡放 menu bar (nav bar) --&gt;
-    <div id="topmenu">
-        <a href="http://www.google.com">NCHU+</a>
-        <a href="http://www.google.com">&gt;選課小幫手</a>
-        <a href="http://www.google.com">&gt;排時間小幫手</a>
-        <div>
-            &gt;課程評鑑
-            <div>
-                <a href="http://www.google.com">&gt;A</a>
-                <a href="http://www.google.com">&gt;B</a>
-                <a href="http://www.google.com">&gt;C</a>
+<body>
+    <!-- 這裡放 menu bar (nav bar) -->
+    <div class="ui fixed inverted pointing menu large " id="topmenu" style="padding:0px 5%;">
+        <a class="item" href="http://www.google.com" style="color:white;">NCHU+</a>
+        <a class="item " href="http://www.google.com" style="color:white;">>選課小幫手</a>
+        <a class="item" href="http://www.google.com" style="color:white;">>排時間小幫手</a>
+        <div class="ui pointing dropdown  item ">
+            <span class="text" style="color:white">>課程評鑑</span>
+            <div class=" menu binverted">
+                <a class="item" href="http://www.google.com" style="color:white;">>A</a>
+                <a class="item" href="http://www.google.com" style="color:white;">>B</a>
+                <a class="item" href="http://www.google.com" style="color:white;">>C</a>
             </div>
         </div>
-        <div>
-            <a href="http://www.google.com">&gt;登入</a>
+        <div class="right menu">
+            <a class="ui item active" href="http://www.google.com" style="color:white;">>登入</a>
         </div>
     </div>
-    &lt;!-- 這裡放 照片slide --&gt;
-    <div id="photoSlide">
+    <!-- 這裡放 照片slide -->
+    <div id="photoSlide" style="padding-top:40px;">
         <div id="ninja-slider">
-            <div>
+            <div class="slider-inner">
                 <ul id="inphoto">
                 </ul>
-                <div>
+                <div class="navsWrapper">
                     <div id="ninja-slider-prev"></div>
                     <div id="ninja-slider-next"></div>
                 </div>
             </div>
         </div>
-        <div></div>
+        <div class="space"></div>
         <div id="photoSlide">
             <div id="ninja-slider">
-                <div>
+                <div class="slider-inner">
                     <ul id="inphoto">
                     </ul>
-                    <div>
+                    <div class="navsWrapper">
                         <div id="ninja-slider-prev"></div>
                         <div id="ninja-slider-next"></div>
                     </div>
@@ -189,14 +172,14 @@ $(document).ready(function() {
             </div>
         </div>
     </div>
-    &lt;!-- 這裡放 子網頁連結--&gt;
-    <div>
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <div>
+    <!-- 這裡放 子網頁連結-->
+    <div class="ui three special stackable cards" style="margin:1px auto;width: 85%;">
+        <div class="card stackable">
+            <div class="blurring dimmable image">
+                <div class="ui inverted dimmer">
+                    <div class="content">
+                        <div class="center" style="font-size: 1.5em;">
+                            <div class="ui inverted clock_black" style="font-size: 1em;line-height:1.5em;">
                                 想整理自己想要的課卻
                                 <br>嫌學校系統操作不便嗎，
                                 <br>選課小幫手，
@@ -206,16 +189,16 @@ $(document).ready(function() {
                 </div>
                 <img src="CoursePickingHelper.jpg">
             </div>
-            <div>
-                <a href="http://yahoo.com.tw">選課小幫手</a>
+            <div class="content">
+                <a class="header text_center" href="http://yahoo.com.tw">選課小幫手</a>
             </div>
         </div>
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <div>
+        <div class="card stackable">
+            <div class="blurring dimmable image">
+                <div class="ui inverted dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <div class="ui inverted clock_black " style="font-size: 1.5em;line-height:1.5em;">
                                 想要找個共同時間
                                 <br>卻又找不到共同空堂嗎?
                                 <br>排時間小幫手
@@ -223,18 +206,18 @@ $(document).ready(function() {
                         </div>
                     </div>
                 </div>
-                <img src="Tigenda.jpg">
+                <img class="ui image" src="Tigenda.jpg">
             </div>
-            <div>
-                <a href="http://yahoo.com.tw">排時間小幫手</a>
+            <div class="content">
+                <a class="header text_center" href="http://yahoo.com.tw" style="font-weight:bold;">排時間小幫手</a>
             </div>
         </div>
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <div>面對琳瑯滿目的課程，
+        <div class="card stackable">
+            <div class="blurring dimmable image">
+                <div class="ui inverted dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <div class="ui primary clock_black" style="font-size: 1.5em;line-height:1.5em;">面對琳瑯滿目的課程，
                                 <br>毫無頭緒，無從下手嗎?
                                 <br> 進來這裡看看吧!
                             </div>
@@ -243,51 +226,38 @@ $(document).ready(function() {
                 </div>
                 <img src="CourseEvaluation.jpg">
             </div>
-            <div>
-                <a href="http://yahoo.com.tw">課程評鑑系統</a>
+            <div class="content">
+                <a class="header text_center" href="http://yahoo.com.tw">課程評鑑系統</a>
             </div>
         </div>
     </div>
-    &lt;!-- 這裡放 資訊部介紹 --&gt;
+    <!-- 這裡放 資訊部介紹 -->
     <div id="interview">
-        <div>
-            <h2>
-<a id="nchu-x-學生會-x-資訊部" class="anchor" href="#nchu-x-%E5%AD%B8%E7%94%9F%E6%9C%83-x-%E8%B3%87%E8%A8%8A%E9%83%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>NCHU x 學生會 x 資訊部</h2>
+        <div class="ui center aligned container">
+            <h2 style="color: white;">NCHU x 學生會 x 資訊部</h2>
         </div>
-        <div>
-            <div>
-                <img src="nchu_sg.jpg">
+        <div class="ui center column aligned grid container stackable">
+            <div class="seven wide column">
+                <img class="ui medium circular  image" src="nchu_sg.jpg">
             </div>
-            <div>
+            <div class=" nine wide column " style="color: white;font-size: large;">
                 <p>
                     <br>學生會資訊部聚集了對於資訊與服務有熱情的人，我們從改善校園系統開始，一步一步地推出許多更便利，更加親近學生們的服務。
                     <br>我們取得了學生會的支持，未來希望能夠結合行銷、設計、工程等不同領域的人才，滿足更多同學們的需求。</p>
             </div>
         </div>
     </div>
-    &lt;!-- 這裡放 footer --&gt;
-    <div>
-        <div>
-            <div>
-                NCHU x 中興學生會
-                 x 資訊部
-                <a href="http://yahoo.com.tw"><i></i></a>
-                <a href="http://yahoo.com.tw"><i></i></a>
+    <!-- 這裡放 footer -->
+    <div class="ui  inverted vertical footer segment">
+        <div class="ui center aligned container">
+            <div class="ui horizontal inverted large divided  list">
+                <span>NCHU x 中興學生會</span>
+                <span> x 資訊部</span>
+                <a href="http://yahoo.com.tw"><i class="facebook square icon large link" ></i></a>
+                <a href="http://yahoo.com.tw"><i class="github square icon large link"></i></a>
             </div>
         </div>
     </div>
+</body>
 
-
-<p></p>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/NCHUSG/SweetyCourse">Sweetycourse</a> is maintained by <a href="https://github.com/NCHUSG">NCHUSG</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
 </html>
